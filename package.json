@@ -1,0 +1,35 @@
+{
+  "name": "plotr-server",
+  "version": "0.0.0",
+  "description": "A server that uses plotr-core to generate pdfs and images",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js ",
+    "build": "babel src --out-dir lib",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "plotr",
+    "pdf",
+    "image"
+  ],
+  "author": "Michael Braun",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "@koa/router": "^9.0.0",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "puppeteer": "^3.0.0",
+    "swagger2": "^2.0.0",
+    "swagger2-koa": "^2.0.0"
+  }
+}

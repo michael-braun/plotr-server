@@ -1,0 +1,43 @@
+openapi: "3.0.0"
+info:
+  description: "plotr-server could be used to generate pdfs and images from html"
+  version: "0.1"
+  title: "plotr-server"
+  license:
+    name: "MIT"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
+  /pdfs/html:
+    post:
+      summary: "Create a pdf with html"
+      description: ""
+      operationId: "createPdfByHtml"
+      requestBody:
+        description: "html-content that should be rendered"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HtmlContent"
+      responses:
+        200:
+          description: The created pdf document
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        400:
+          description: "The request is invalid"
+components:
+  schemas:
+    HtmlContent:
+      type: "object"
+      properties:
+        html:
+          type: "string"
+          description: "A html-string that should be rendered"
+          required: true
+        filename:
+          type: "string"
+          description: "An optional filename that should be used when downloading the file. The correct extension will be added."
