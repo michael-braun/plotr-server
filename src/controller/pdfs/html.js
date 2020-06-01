@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import { PdfCreator, PageCreator } from 'plotr-core';
+import { PdfCreator, PageCreator } from '@mbraun/plotr-core';
 
 export default async function createPdfByHtml(ctx) {
     const pageCreator = new PageCreator(() => puppeteer.launch());
