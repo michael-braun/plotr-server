@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@koa/router": "^9.0.0",
+    "@mbraun/plotr-core": "0.0.1-beta.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
     "puppeteer": "^3.0.0",
