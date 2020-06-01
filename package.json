@@ -1,6 +1,6 @@
 {
   "name": "plotr-server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A server that uses plotr-core to generate pdfs and images",
   "main": "lib/index.js",
   "scripts": {
