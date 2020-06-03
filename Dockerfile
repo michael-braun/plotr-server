@@ -1,11 +1,13 @@
 FROM node:12-slim
 
 WORKDIR /usr/src/app
-COPY . .
-# RUN apk add python3 build-base
 RUN apt-get update
 RUN apt-get -y install libgbm-dev
+# RUN apk add python3 build-base
+COPY ./.npmrc ./
+COPY package*.json ./
 RUN npm ci
+COPY . .
 RUN npm run build
 
 
@@ -23,8 +25,8 @@ RUN apt-get update &&\
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
 COPY ./.npmrc ./
+COPY package*.json ./
 
 # Install puppeteer so it's available in the container.
 RUN npm ci --only=production \
@@ -41,7 +43,7 @@ WORKDIR /usr/src/app
 # Run everything after as non-privileged user.
 USER pptruser
 
-COPY --from=0 /usr/src/app/lib ./lib
 COPY src/openapi.yml ./lib/
+COPY --from=0 /usr/src/app/lib ./lib
 
 CMD ["node", "lib/index.js"]
