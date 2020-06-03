@@ -11,6 +11,6 @@ export default async function createPdfByHtml(ctx) {
 
     ctx.set('Content-Type', 'application/pdf');
     ctx.attachment(`${ctx.request.body.filename || 'download'}.pdf`);
-    ctx.body = await pdfCreator.createPdf();
+    ctx.body = await pdfCreator.createPdf(ctx.request.body.options || {});
     ctx.status = 200;
 }
